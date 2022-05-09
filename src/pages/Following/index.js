@@ -1,9 +1,5 @@
-import React from 'react'
-
-export default function Following() {
-    return (
-		<div>
-			<h2>Following</h2>
-		</div>
-    )
+function Following() {
+    return <h2>Following page</h2>;
 }
+
+export default Following;
