@@ -20,12 +20,12 @@ import Tippy from '@tippyjs/react';
 import HeadlessTippy from '@tippyjs/react/headless';
 
 import { Wrapper as PopperWrapper } from '~/components/Popper';
-// import 'tippy.js/dist/tippy.css'; // optional
 import images from '~/assets/images';
 import AccountItem from '../AccountItem';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
 import { InboxIcon, MessageIcon, UploadIcon } from '~/components/Icons';
+import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 
@@ -170,7 +170,7 @@ function Header() {
                     )}
                     <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleChangeMenu}>
                         {currentUser ? (
-                            <img
+                            <Image
                                 className={cx('user-avatar')}
                                 src="https://scontent.fsgn5-3.fna.fbcdn.net/v/t39.30808-6/273278169_3086405041630770_9031677958357390998_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Nna4cwCVw0AAX_9IBY3&_nc_ht=scontent.fsgn5-3.fna&oh=00_AT8vhu3Hngu27T_X7VgTw_2xkvf7W_fS9kvDXy8kMGfHOw&oe=629E4723"
                                 alt=""
