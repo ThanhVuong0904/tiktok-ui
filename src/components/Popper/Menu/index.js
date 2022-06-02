@@ -34,7 +34,7 @@ function Menu({ children, items = [], onChange }) {
 
     return (
         <Tippy
-            visible
+            onHide={() => setHistory((prev) => prev.slice(0, 1))}
             interactive
             placement="bottom-end"
             render={(attrs) => (
