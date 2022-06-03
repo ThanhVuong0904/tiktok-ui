@@ -9,7 +9,7 @@ import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '../AccountItem';
 import { SearchIcon } from '~/components/Icons';
 import { useDebounce } from '~/hooks';
-
+import * as searchServices from '~/apiServices/searchService';
 const cx = classNames.bind(styles);
 
 export default function Search() {
@@ -27,15 +27,13 @@ export default function Search() {
             setSearchResult([]);
             return;
         }
-        setLoading(true);
-        //encodeURIComponent mã hóa dấu & và dấu ?
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounce)}&type=less`)
-            .then((res) => res.json())
-            .then((res) => {
-                setSearchResult(res.data);
-                setLoading(false);
-            })
-            .catch(() => setLoading(false));
+        const fetchApi = async () => {
+            setLoading(true);
+            const result = await searchServices.search(debounce);
+            setSearchResult(result);
+            setLoading(false);
+        };
+        fetchApi();
     }, [debounce]);
 
     const handleClear = () => {
