@@ -45,6 +45,15 @@ export default function Search() {
     const handleHideResult = () => {
         setShowResult(false);
     };
+
+    const handleChange = (e) => {
+        const searchValue = e.target.value;
+
+        if (!searchResult.startsWith(' ')) {
+            setSearchValue(searchValue);
+        }
+    };
+
     return (
         <HeadlessTippy
             interactive={true}
@@ -68,7 +77,7 @@ export default function Search() {
                     spellCheck={false}
                     ref={inputRef}
                     value={searchValue}
-                    onChange={(e) => setSearchValue(e.target.value)}
+                    onChange={handleChange}
                     onFocus={() => setShowResult(true)}
                 />
                 {!!searchValue && !loading && (
@@ -77,7 +86,7 @@ export default function Search() {
                     </button>
                 )}
                 {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
-                <button className={cx('search-btn')}>
+                <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
                     <SearchIcon />
                 </button>
             </div>
